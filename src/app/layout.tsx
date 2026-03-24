@@ -5,8 +5,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Caffè Musetti - A CASA TUA, COME AL BAR",
-  description: "Nová podoba, ještě více chuti. Objevte směsi Musetti: Armonico, Intenso, Gentile a Deca.",
+  title: "Caffè Musetti CZ Storefront",
+  description:
+    "Nová podoba českého storefrontu Caffè Musetti: zrnková káva, kapsle Nespresso, pody a mletá káva v přehledném systému.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

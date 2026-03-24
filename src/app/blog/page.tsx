@@ -75,7 +75,7 @@ export default function Blog() {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Zůstaňte v obraze</h2>
           <p className="text-gray-600 mb-8">

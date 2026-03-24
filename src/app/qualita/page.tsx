@@ -30,7 +30,7 @@ export default function Qualita() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow">
+            <div className="text-center rounded-xl border border-gray-100 bg-white p-8 hover:shadow-lg transition-shadow">
               <div className="text-6xl mb-4">🌱</div>
               <h3 className="text-2xl font-bold mb-3">Výběr</h3>
               <p className="text-gray-600">
@@ -38,7 +38,7 @@ export default function Qualita() {
               </p>
             </div>
 
-            <div className="text-center p-8 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow">
+            <div className="text-center rounded-xl border border-gray-100 bg-white p-8 hover:shadow-lg transition-shadow">
               <div className="text-6xl mb-4">🔥</div>
               <h3 className="text-2xl font-bold mb-3">Pražení</h3>
               <p className="text-gray-600">
@@ -46,7 +46,7 @@ export default function Qualita() {
               </p>
             </div>
 
-            <div className="text-center p-8 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow">
+            <div className="text-center rounded-xl border border-gray-100 bg-white p-8 hover:shadow-lg transition-shadow">
               <div className="text-6xl mb-4">✓</div>
               <h3 className="text-2xl font-bold mb-3">Kontrola</h3>
               <p className="text-gray-600">
@@ -57,7 +57,7 @@ export default function Qualita() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-20">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="text-4xl font-bold mb-12">Objevte naše směsi</h2>
 

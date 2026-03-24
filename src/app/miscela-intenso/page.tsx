@@ -78,7 +78,7 @@ export default function MiscelaIntenso() {
       </section>
 
       {/* Note Predominanti */}
-      <section className="bg-amber-50 py-20">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
             Převládající <span className="text-[#e42842]">chuťové noty</span>
@@ -104,14 +104,14 @@ export default function MiscelaIntenso() {
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             <div className="text-center">
               <h3 className="text-3xl font-bold mb-8">Původ kávy</h3>
-              <div className="bg-amber-50 rounded-2xl p-8">
+              <div className="rounded-2xl border border-gray-100 bg-white p-8">
                 <img src="https://www.musetti.it/wp-content/uploads/2023/05/Intenso_Mappa_Caffe-1200x698.webp" alt="Mapa původu kávy Intenso" className="w-full rounded-lg bg-white object-contain" />
               </div>
             </div>
 
             <div className="text-center">
               <h3 className="text-3xl font-bold mb-8">Chuťový profil</h3>
-              <div className="bg-amber-50 rounded-2xl p-8">
+              <div className="rounded-2xl border border-gray-100 bg-white p-8">
                 <img src="https://www.musetti.it/wp-content/uploads/2023/05/Intenso_Spiderchart-1024x800.webp" alt="Chuťový spider chart Intenso" className="w-full rounded-lg bg-white object-contain" />
               </div>
             </div>
@@ -120,7 +120,7 @@ export default function MiscelaIntenso() {
       </section>
 
       {/* Product Range */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Naše <span className="text-[#e42842]">produktová řada</span>
@@ -173,19 +173,19 @@ export default function MiscelaIntenso() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <Link href="/miscela-armonico" className="hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-pink-50 to-pink-100 rounded-lg p-8 text-center">
+            <Link href="/miscela-armonico" className="hover:scale-105 transition-transform duration-300 rounded-lg border border-gray-100 bg-white p-8 text-center">
               <img src="https://www.musetti.it/wp-content/uploads/2023/06/THATS_ARMONICO-1024x1024.webp" alt="Směs Armonico" className="mx-auto mb-4 h-48 w-48 object-contain" />
               <h3 className="text-3xl font-['Pacifico'] mb-2">Armonico</h3>
               <p className="text-sm text-gray-600">Vyvážená a krémová směs</p>
             </Link>
 
-            <Link href="/miscela-gentile" className="hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-8 text-center">
+            <Link href="/miscela-gentile" className="hover:scale-105 transition-transform duration-300 rounded-lg border border-gray-100 bg-white p-8 text-center">
               <img src="https://www.musetti.it/wp-content/uploads/2023/06/VERY_VERY_GENTILE-400x400.webp" alt="Směs Gentile" className="mx-auto mb-4 h-48 w-48 object-contain" />
               <h3 className="text-3xl font-['Pacifico'] mb-2">Gentile</h3>
               <p className="text-sm text-gray-600">Jemná a elegantní směs</p>
             </Link>
 
-            <Link href="/miscela-deca" className="hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-sky-50 to-sky-100 rounded-lg p-8 text-center">
+            <Link href="/miscela-deca" className="hover:scale-105 transition-transform duration-300 rounded-lg border border-gray-100 bg-white p-8 text-center">
               <img src="https://www.musetti.it/wp-content/uploads/2023/06/GIVE_ME_A_DECA-400x400.webp" alt="Směs Deca" className="mx-auto mb-4 h-48 w-48 object-contain" />
               <h3 className="text-3xl font-['Pacifico'] mb-2">Deca</h3>
               <p className="text-sm text-gray-600">Bez kofeinu, bez kompromisu</p>

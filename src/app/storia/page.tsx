@@ -45,7 +45,7 @@ export default function Storia() {
       </section>
 
       {/* Timeline Content */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4 max-w-5xl">
 
           {/* 1934 */}

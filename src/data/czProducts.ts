@@ -1,10 +1,12 @@
 export type CoffeeCategory = {
   id: 'beans' | 'capsules' | 'pods' | 'ground';
+  slug: string;
   label: string;
   headline: string;
   description: string;
   shortNote: string;
   href: string;
+  pageHref: string;
   shopUrl: string;
   accent: string;
   panelClassName: string;
@@ -22,18 +24,21 @@ export type CzProduct = {
   compareAtPrice?: string;
   variants: string[];
   href: string;
+  sourceUrl: string;
   images: string[];
 };
 
 export const coffeeCategories: CoffeeCategory[] = [
   {
     id: 'beans',
+    slug: 'zrnkova-kava',
     label: 'Zrnková káva',
     headline: 'Klasické balení pro espresso i každodenní domácí přípravu.',
     description:
       'Nová řada Caffé Musetti a na výběr z několika druhů Armonico, Intenso, Gentile a Deca. Přehledně, s jasným chuťovým rozlišením a silným vizuálním vstupem.',
     shortNote: '4 produkty',
     href: '#zrnkova-kava',
+    pageHref: '/kategorie/zrnkova-kava',
     shopUrl: 'https://www.musettishop.cz/zrnkova-kava-caffe-musetti',
     accent: '#b86f92',
     panelClassName: 'from-[#fff7fb] via-[#fff9fc] to-[#f5e0ea]',
@@ -46,12 +51,14 @@ export const coffeeCategories: CoffeeCategory[] = [
   },
   {
     id: 'capsules',
+    slug: 'kapsle-nespresso',
     label: 'Kapsle Nespresso',
     headline: 'Recyklovatelné kapsle s rychlou volbou podle typu směsi.',
     description:
       'Zde naleznete zcela recyklovatelné kapsle do Nespresso kávovarů Caffé Musetti. Přehledně rozdělené na Intenso, Armonico a Gentile.',
     shortNote: '3 produkty',
     href: '#kapsle-nespresso',
+    pageHref: '/kategorie/kapsle-nespresso',
     shopUrl: 'https://www.musettishop.cz/kapsle-nespresso-caffe-musetti',
     accent: '#8a6b59',
     panelClassName: 'from-[#fffaf5] via-[#fffdf9] to-[#efe4d7]',
@@ -64,12 +71,14 @@ export const coffeeCategories: CoffeeCategory[] = [
   },
   {
     id: 'pods',
+    slug: 'pody',
     label: 'Pody',
     headline: 'Kompostovatelné pody pro jednoduchý, čistý a rychlý servis.',
     description:
       'Zde naleznete kompostovatelné pody v různých baleních od Caffé Musetti Gentile, Armonico a Intenso. Vizuálně jasné, produktově srozumitelné a snadno porovnatelné.',
     shortNote: '3 produkty',
     href: '#pody',
+    pageHref: '/kategorie/pody',
     shopUrl: 'https://www.musettishop.cz/pody-caffe-musetti',
     accent: '#79886e',
     panelClassName: 'from-[#f7fbf4] via-[#fcfdf9] to-[#e5eedc]',
@@ -82,12 +91,14 @@ export const coffeeCategories: CoffeeCategory[] = [
   },
   {
     id: 'ground',
+    slug: 'mleta-kava',
     label: 'Mletá káva',
     headline: 'Menší balení pro moka konvičku, domácí rytmus a rychlou volbu.',
     description:
       'Zde naleznete mletou kávu v různých baleních od Caffé Musetti. Crearoma, Gold Cuvée i Mio Espresso mají vlastní roli a vlastní typ zákazníka.',
     shortNote: '3 produkty',
     href: '#mleta-kava',
+    pageHref: '/kategorie/mleta-kava',
     shopUrl: 'https://www.musettishop.cz/mleta-kava-caffe-musetti',
     accent: '#486a3f',
     panelClassName: 'from-[#f7faf5] via-[#fcfdf9] to-[#dce9d7]',
@@ -110,7 +121,8 @@ export const czProducts: CzProduct[] = [
       'Bezkofeinová káva s jemným aromatem a plnou dochutí pro zákazníky, kteří chtějí chuť bez kofeinu.',
     price: '280 Kč',
     variants: ['500 g'],
-    href: 'https://www.musettishop.cz/p/bezkofeinova-kava-museti-zrnkova',
+    href: '/produkty/deca-500g-zrnkovka',
+    sourceUrl: 'https://www.musettishop.cz/p/bezkofeinova-kava-museti-zrnkova',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/caffe-in-grani-deca-05-kg-157242.jpg?v=1722618986',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/caffe-in-grani-deca-05-kg-211300.png?v=1722842062',
@@ -125,7 +137,8 @@ export const czProducts: CzProduct[] = [
       'Vyvážená směs se skvělou cremou pro zákazníky, kteří chtějí harmonické a jisté espresso.',
     price: '569 Kč',
     variants: ['1 kg'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-armonico-1-kg-zrnkova-kava',
+    href: '/produkty/armonico-1kg-zrnkovka',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-armonico-1-kg-zrnkova-kava',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/caffe-in-grani-armonico-1-kg-260395.jpg?v=1722618983',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/caffe-in-grani-armonico-1-kg-151264.png?v=1722841876',
@@ -140,7 +153,8 @@ export const czProducts: CzProduct[] = [
       'Jemnější profil s nízkým obsahem kofeinu a sladší aromatikou pro klidnější každodenní přípravu.',
     price: '398 Kč',
     variants: ['500 g'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-gentile-500g-zrnkova-kava',
+    href: '/produkty/gentile-500g-zrnkovka',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-gentile-500g-zrnkova-kava',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/caffe-in-grani-gentile-05-kg-776445.jpg?v=1722618986',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/caffe-in-grani-gentile-05-kg-774786.png?v=1722841983',
@@ -155,7 +169,8 @@ export const czProducts: CzProduct[] = [
       'Intenzivní směs s plným tělem a trvalou dochutí pro zákazníky, kteří chtějí výrazný šálek bez kompromisu.',
     price: '499 Kč',
     variants: ['1 kg'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-intenso-1kg',
+    href: '/produkty/intenso-1kg-zrnkovka',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-intenso-1kg',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/caffe-in-grani-intenso-1-kg-194684.jpg?v=1722618986',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/caffe-in-grani-intenso-1-kg-259754.jpg?v=1722841986',
@@ -170,7 +185,8 @@ export const czProducts: CzProduct[] = [
       'Vyvážená a krémová kapsle s tóny kakaa, čokolády a lískových oříšků.',
     price: '94 Kč',
     variants: ['10 ks', '50 ks'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-armonico-kapsle-nespresso-18-30-50-100ks',
+    href: '/produkty/armonico-kapsle',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-armonico-kapsle-nespresso-18-30-50-100ks',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/capsule-di-caffe-in-alluminio-musetti-compatibili-nespresso-miscela-armonico-118325.png?v=1734385107',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/capsule-di-caffe-in-alluminio-musetti-compatibili-nespresso-miscela-armonico-459948.png?v=1734339739',
@@ -185,7 +201,8 @@ export const czProducts: CzProduct[] = [
       'Aromatická a jemnější kapsle s ovocnými a mandlovými tóny pro lehčí profil a moderní zákazníky.',
     price: '99 Kč',
     variants: ['10 ks', '50 ks'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-gentile-kapsle-nespresso-18-30-50-100-ks',
+    href: '/produkty/gentile-kapsle',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-gentile-kapsle-nespresso-18-30-50-100-ks',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/capsule-di-caffe-in-alluminio-musetti-compatibili-nespresso-miscela-gentile-855897.png?v=1734385109',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/capsule-di-caffe-in-alluminio-musetti-compatibili-nespresso-miscela-gentile-568334.png?v=1734339765',
@@ -200,7 +217,8 @@ export const czProducts: CzProduct[] = [
       'Intenzita 5/5, tóny kakaa a pečiva, silná a krémová chuť pro nejvýraznější kapslový výběr.',
     price: '89 Kč',
     variants: ['10 ks', '50 ks'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-intenso-kapsle-nespresso-18-30-50-100-ks',
+    href: '/produkty/intenso-kapsle',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-intenso-kapsle-nespresso-18-30-50-100-ks',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/capsule-di-caffe-in-alluminio-musetti-compatibili-nespresso-miscela-intenso-632319.png?v=1734385110',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/capsule-di-caffe-in-alluminio-musetti-compatibili-nespresso-miscela-intenso-139615.jpg?v=1734339799',
@@ -215,7 +233,8 @@ export const czProducts: CzProduct[] = [
       'Kompostovatelné pody pro udržitelnější provoz a vyváženou extrakci bez zbytečné složitosti.',
     price: '118 Kč',
     variants: ['18 ks', '30 ks', '50 ks', '100 ks'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-gentile-pods-18-30-50-100-ks',
+    href: '/produkty/armonico-pods',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-gentile-pods-18-30-50-100-ks',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/cialde-di-caffe-compostabili-musetti-miscela-armonico-865874.png?v=1728419224',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/cialde-di-caffe-compostabili-musetti-miscela-armonico-270251.png?v=1728419224',
@@ -230,7 +249,8 @@ export const czProducts: CzProduct[] = [
       'Kompostovatelné pody s jemnějším profilem pro čistou a pohodlnou přípravu v menších i větších baleních.',
     price: '125 Kč',
     variants: ['18 ks', '30 ks', '50 ks', '100 ks'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-gentile-pods-18-30-50-100-ks-1',
+    href: '/produkty/gentile-pods',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-gentile-pods-18-30-50-100-ks-1',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/cialde-di-caffe-compostabili-musetti-miscela-gentile-825652.jpg?v=1728667768',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/cialde-di-caffe-compostabili-musetti-miscela-gentile-409819.png?v=1728667768',
@@ -245,7 +265,8 @@ export const czProducts: CzProduct[] = [
       'Kompostovatelné pody s intenzivnějším charakterem, kakaovými tóny a silnější, krémovou chutí.',
     price: '113 Kč',
     variants: ['18 ks', '30 ks', '50 ks', '100 ks'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-intenso-pods-18-30-50-100-ks',
+    href: '/produkty/intenso-pods',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-intenso-pods-18-30-50-100-ks',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/cialde-di-caffe-compostabili-musetti-miscela-intenso-631227.jpg?v=1728667757',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/cialde-di-caffe-compostabili-musetti-miscela-intenso-252793.jpg?v=1728667758',
@@ -260,7 +281,8 @@ export const czProducts: CzProduct[] = [
       'Směs 40 % Arabica a 60 % Robusta doporučená i jako ranní káva díky vyššímu obsahu kofeinu.',
     price: '135 Kč',
     variants: ['250 g'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-crearoma-250g-mleta-kava',
+    href: '/produkty/crearoma-mleta',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-crearoma-250g-mleta-kava',
     images: [
       'https://caffe-musetti.s26.cdn-upgates.com/_cache/5/5/55561c49037a86dd4e25d321ccacc125-vyr-123musetti-crearoma-250gr-coffeetrade-mleta-kava.webp',
       'https://caffe-musetti.s26.cdn-upgates.com/_cache/5/5/55561c49037a86dd4e25d321ccacc125-vyr-123musetti-crearoma-250gr-coffeetrade-mleta-kava.webp',
@@ -275,7 +297,8 @@ export const czProducts: CzProduct[] = [
       'Speciální výroční směs s bohatým aromatickým buketem, jemnou kyselostí a trvalými kakaovými tóny.',
     price: '212 Kč',
     variants: ['250 g'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-gold-cuve-250g-mleta-kava',
+    href: '/produkty/gold-cuvee-mleta',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-gold-cuve-250g-mleta-kava',
     images: [
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/caffe-macinato-musetti-miscela-gold-cuvee-250g-254504.png?v=1739853920',
       'https://cdn.shopify.com/s/files/1/0631/3947/9768/files/caffe-macinato-musetti-miscela-gold-cuvee-250g-254504.png?v=1739853920',
@@ -290,10 +313,34 @@ export const czProducts: CzProduct[] = [
       'Ikonická mletá káva pro moka rytmus a tradiční domácí přípravu v kompaktním balení.',
     price: '160 Kč',
     variants: ['250 g'],
-    href: 'https://www.musettishop.cz/p/caffe-musetti-mio-espresso-250g-mleta-kava',
+    href: '/produkty/mio-espresso-mleta',
+    sourceUrl: 'https://www.musettishop.cz/p/caffe-musetti-mio-espresso-250g-mleta-kava',
     images: [
       'https://caffe-musetti.s26.cdn-upgates.com/_cache/5/4/54c8d4cfdc61c4f4c6dc8117f550498e-musetti-mio-espresso-250g-coffeetrade-cz-mleta-kava.jpg',
       'https://caffe-musetti.s26.cdn-upgates.com/_cache/5/4/54c8d4cfdc61c4f4c6dc8117f550498e-musetti-mio-espresso-250g-coffeetrade-cz-mleta-kava.jpg',
     ],
   },
 ];
+
+export const categoryBenefits: Record<CoffeeCategory['id'], string[]> = {
+  beans: ['Espresso směsi', 'Domácí i profi použití', 'Silná vizuální identita'],
+  capsules: ['10 a 50 ks', 'Rychlá orientace podle směsi', 'Recyklovatelný formát'],
+  pods: ['Kompostovatelné řešení', '18 až 100 ks', 'Čistá a rychlá příprava'],
+  ground: ['Moka a domácí rytmus', 'Nižší vstupní cena', 'Praktická menší balení'],
+};
+
+export function getCategoryBySlug(slug: string) {
+  return coffeeCategories.find((category) => category.slug === slug);
+}
+
+export function getCategoryById(id: CoffeeCategory['id']) {
+  return coffeeCategories.find((category) => category.id === id);
+}
+
+export function getProductsByCategory(categoryId: CoffeeCategory['id']) {
+  return czProducts.filter((product) => product.categoryId === categoryId);
+}
+
+export function getProductBySlug(slug: string) {
+  return czProducts.find((product) => product.slug === slug);
+}

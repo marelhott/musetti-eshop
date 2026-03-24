@@ -70,7 +70,7 @@ export default function Sostenibilita() {
       </section>
 
       {/* Social Section */}
-      <section id="sociale" className="bg-gray-50 py-20">
+      <section id="sociale" className="bg-white py-20">
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
             NÁŠ SPOLEČENSKÝ PŘÍNOS

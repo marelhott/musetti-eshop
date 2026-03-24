@@ -1,26 +1,27 @@
 import Link from 'next/link';
 
-import type { CzProduct } from '@/data/czProducts';
+import type { CatalogProduct } from '@/data/catalog';
 
 type ProductCardProps = {
-  product: CzProduct;
+  product: CatalogProduct;
+  categoryLabel?: string;
 };
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, categoryLabel }: ProductCardProps) {
   const [primaryImage, secondaryImage] = product.images;
-  const isExternal = product.href.startsWith('http');
+  const imageCount = product.images.length;
   const cardClassName =
     'group flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#e9dfd7] bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(77,48,34,0.12)]';
 
   const cardInner = (
     <>
-      <div className="relative overflow-hidden bg-[linear-gradient(180deg,#fff_0%,#f7f1eb_100%)] px-6 pb-4 pt-8">
+      <div className="relative overflow-hidden bg-white px-6 pb-4 pt-8">
         <div className="mb-5 flex items-center justify-between">
           <span className="rounded-full border border-[#d9c8bb] px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-[#7f695b]">
-            {product.category}
+            {categoryLabel ?? product.category}
           </span>
           <span className="text-[11px] uppercase tracking-[0.24em] text-[#b0917e]">
-            {secondaryImage ? '2 obrázky' : 'Detail'}
+            {imageCount > 1 ? `${imageCount} obrázky` : '1 obrázek'}
           </span>
         </div>
 
@@ -28,7 +29,9 @@ export function ProductCard({ product }: ProductCardProps) {
           <img
             src={primaryImage}
             alt={product.title}
-            className="absolute inset-0 h-full w-full object-contain transition-all duration-500 group-hover:scale-[1.03] group-hover:opacity-0"
+            className={`absolute inset-0 h-full w-full object-contain transition-all duration-500 group-hover:scale-[1.03] ${
+              secondaryImage ? 'group-hover:opacity-0' : ''
+            }`}
           />
           {secondaryImage ? (
             <img
@@ -40,15 +43,15 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col px-6 pb-6 pt-5">
+      <div className="flex flex-1 flex-col bg-[linear-gradient(180deg,#fff_0%,#f7f1eb_100%)] px-6 pb-6 pt-5">
         <h3 className="text-2xl font-semibold leading-tight text-[#2d1e17]">{product.title}</h3>
         <p className="mt-3 text-sm leading-6 text-[#6f5a4e]">{product.shortDescription}</p>
 
         <div className="mt-4 flex flex-wrap gap-2">
-          {product.variants.map((variant) => (
+          {(product.variants as readonly string[]).map((variant: string) => (
             <span
               key={variant}
-              className="rounded-full bg-[#f5eee8] px-3 py-1 text-xs font-medium text-[#785f51]"
+              className="rounded-full bg-white px-3 py-1 text-xs font-medium text-[#785f51] ring-1 ring-[#eadfd5]"
             >
               {variant}
             </span>
@@ -69,14 +72,6 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
     </>
   );
-
-  if (isExternal) {
-    return (
-      <a href={product.href} target="_blank" rel="noreferrer" className={cardClassName}>
-        {cardInner}
-      </a>
-    );
-  }
 
   return (
     <Link href={product.href} className={cardClassName}>

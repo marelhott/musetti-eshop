@@ -1,17 +1,6 @@
-if (typeof globalThis.localStorage === "undefined") {
-  globalThis.localStorage = {
-    getItem() {
-      return null;
-    },
-    setItem() {},
-    removeItem() {},
-    clear() {}
-  };
-}
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  allowedDevOrigins: ["*.preview.same-app.com"],
+  allowedDevOrigins: ["*.preview.same-app.com", "localhost:3001", "127.0.0.1:3001"],
   images: {
     unoptimized: true,
     domains: [
