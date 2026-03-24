@@ -49,34 +49,34 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-[#efe4db] bg-white/95 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-[#c91f36] bg-[#e42842] shadow-[0_12px_30px_rgba(228,40,66,0.22)]">
         <div className="container flex items-center justify-between gap-6 px-0 py-4">
           <Link href="/" className="flex items-center">
             <img
               src="https://ext.same-assets.com/721295644/1917089157.png"
               alt="Musetti Logo"
-              className="h-12"
+              className="h-12 brightness-0 invert"
             />
           </Link>
 
           <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             <div className="space-y-1.5">
-              <div className="h-0.5 w-6 bg-[#e42842]"></div>
-              <div className="h-0.5 w-6 bg-[#e42842]"></div>
-              <div className="h-0.5 w-6 bg-[#e42842]"></div>
+              <div className="h-0.5 w-6 bg-white"></div>
+              <div className="h-0.5 w-6 bg-white"></div>
+              <div className="h-0.5 w-6 bg-white"></div>
             </div>
           </button>
 
           <nav className="hidden flex-1 items-center justify-end gap-7 text-sm md:flex">
-            <Link href="/akce" className="font-semibold tracking-[0.12em] text-[#d94b4b] transition-colors hover:text-[#b72828]">
+            <Link href="/akce" className="font-semibold tracking-[0.12em] text-white transition-colors hover:text-white/80">
               AKCE!
             </Link>
 
             <div className="group relative">
-              <button className="font-medium text-[#2d1e17] transition-colors hover:text-[#e42842]">
+              <button className="font-medium text-white transition-colors hover:text-white/80">
                 Káva
               </button>
-              <div className="invisible absolute left-0 top-full mt-4 min-w-[320px] rounded-[1.5rem] border border-[#eadfd5] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.08)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              <div className="invisible absolute left-0 top-full mt-4 min-w-[320px] rounded-[1.5rem] border border-[#f0c9cf] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
                 <div className="flex flex-col gap-1">
                   {groupedCatalog.coffee.map((item: (typeof groupedCatalog.coffee)[number]) => (
                     <Link
@@ -93,7 +93,7 @@ export default function Header() {
 
             <Link
               href="/gurmanske-produkty"
-              className="font-medium text-[#2d1e17] transition-colors hover:text-[#e42842]"
+              className="font-medium text-white transition-colors hover:text-white/80"
             >
               Gurmánské produkty
             </Link>
@@ -101,17 +101,17 @@ export default function Header() {
             {groupedCatalog.accessories[0] ? (
               <Link
                 href={groupedCatalog.accessories[0].pageHref}
-                className="font-medium text-[#2d1e17] transition-colors hover:text-[#e42842]"
+                className="font-medium text-white transition-colors hover:text-white/80"
               >
                 Šálky a doplňky
               </Link>
             ) : null}
 
             <div className="group relative">
-              <button className="font-medium text-[#2d1e17] transition-colors hover:text-[#e42842]">
+              <button className="font-medium text-white transition-colors hover:text-white/80">
                 Kávovary
               </button>
-              <div className="invisible absolute left-0 top-full mt-4 min-w-[280px] rounded-[1.5rem] border border-[#eadfd5] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.08)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              <div className="invisible absolute left-0 top-full mt-4 min-w-[280px] rounded-[1.5rem] border border-[#f0c9cf] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
                 <div className="flex flex-col gap-1">
                   {groupedCatalog.machines.map((item: (typeof groupedCatalog.machines)[number]) => (
                     <Link
@@ -127,10 +127,10 @@ export default function Header() {
             </div>
 
             <div className="group relative">
-              <button className="font-medium text-[#2d1e17] transition-colors hover:text-[#e42842]">
+              <button className="font-medium text-white transition-colors hover:text-white/80">
                 Informace
               </button>
-              <div className="invisible absolute right-0 top-full mt-4 min-w-[220px] rounded-[1.5rem] border border-[#eadfd5] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.08)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              <div className="invisible absolute right-0 top-full mt-4 min-w-[220px] rounded-[1.5rem] border border-[#f0c9cf] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
                 <div className="flex flex-col gap-1">
                   {brandNavigationItems.map((item: { href: string; label: string }) => (
                     <Link
@@ -148,29 +148,29 @@ export default function Header() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="border-t bg-white md:hidden">
+          <div className="border-t border-white/15 bg-[#e42842] md:hidden">
             <nav className="container flex flex-col gap-4 px-0 py-4">
-              <Link href="/akce" className="font-semibold text-[#d94b4b]" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/akce" className="font-semibold text-white" onClick={() => setMobileMenuOpen(false)}>
                 AKCE!
               </Link>
 
               <div>
                 <button
                   onClick={() => setMobileCatalogOpen(!mobileCatalogOpen)}
-                  className="w-full text-left font-medium text-[#2d1e17]"
+                  className="w-full text-left font-medium text-white"
                 >
                   Sortiment podle skupin
                 </button>
                 {mobileCatalogOpen && (
                   <div className="mt-3 flex flex-col gap-4 pl-4">
                     <div>
-                      <div className="text-xs uppercase tracking-[0.2em] text-[#9f8575]">Káva</div>
+                      <div className="text-xs uppercase tracking-[0.2em] text-white/60">Káva</div>
                       <div className="mt-2 flex flex-col gap-2">
                         {groupedCatalog.coffee.map((item: (typeof groupedCatalog.coffee)[number]) => (
                           <Link
                             key={item.id}
                             href={item.pageHref}
-                            className="text-[#2d1e17] hover:text-[#e42842]"
+                            className="text-white hover:text-white/80"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {item.label}
@@ -180,13 +180,13 @@ export default function Header() {
                     </div>
 
                     <div>
-                      <div className="text-xs uppercase tracking-[0.2em] text-[#9f8575]">Kávovary</div>
+                      <div className="text-xs uppercase tracking-[0.2em] text-white/60">Kávovary</div>
                       <div className="mt-2 flex flex-col gap-2">
                         {groupedCatalog.machines.map((item: (typeof groupedCatalog.machines)[number]) => (
                           <Link
                             key={item.id}
                             href={item.pageHref}
-                            className="text-[#2d1e17] hover:text-[#e42842]"
+                            className="text-white hover:text-white/80"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {item.label}
@@ -197,7 +197,7 @@ export default function Header() {
 
                     <Link
                       href="/gurmanske-produkty"
-                      className="text-[#2d1e17] hover:text-[#e42842]"
+                      className="text-white hover:text-white/80"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Gurmánské produkty
@@ -205,11 +205,11 @@ export default function Header() {
 
                     {groupedCatalog.accessories[0] ? (
                       <div>
-                        <div className="text-xs uppercase tracking-[0.2em] text-[#9f8575]">Šálky a doplňky</div>
+                        <div className="text-xs uppercase tracking-[0.2em] text-white/60">Šálky a doplňky</div>
                         <div className="mt-2 flex flex-col gap-2">
                           <Link
                             href={groupedCatalog.accessories[0].pageHref}
-                            className="text-[#2d1e17] hover:text-[#e42842]"
+                            className="text-white hover:text-white/80"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {groupedCatalog.accessories[0].label}
@@ -224,7 +224,7 @@ export default function Header() {
               <div>
                 <button
                   onClick={() => setMobileBrandOpen(!mobileBrandOpen)}
-                  className="w-full text-left font-medium text-[#2d1e17]"
+                  className="w-full text-left font-medium text-white"
                 >
                   Informace
                 </button>
@@ -234,7 +234,7 @@ export default function Header() {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="text-[#2d1e17] hover:text-[#e42842]"
+                        className="text-white hover:text-white/80"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {item.label}
