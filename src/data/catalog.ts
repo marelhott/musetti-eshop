@@ -36,6 +36,8 @@ export type CatalogProduct = {
   categoryId: string;
   category: string;
   collectionHandles?: string[];
+  collectionSortOrders?: Record<string, number>;
+  primarySortOrder?: number;
   title: string;
   shortDescription: string;
   price: string;
@@ -67,11 +69,22 @@ export function getCategoryById(id: string) {
 }
 
 export function getProductsByCategory(categoryId: string) {
-  return catalogProductsData.filter(
-    (product) =>
-      product.categoryId === categoryId ||
-      Boolean(product.collectionHandles && product.collectionHandles.includes(categoryId)),
-  );
+  return catalogProductsData
+    .filter(
+      (product) =>
+        product.categoryId === categoryId ||
+        Boolean(product.collectionHandles && product.collectionHandles.includes(categoryId)),
+    )
+    .sort((a, b) => {
+      const aOrder = a.collectionSortOrders?.[categoryId] ?? a.primarySortOrder ?? 999;
+      const bOrder = b.collectionSortOrders?.[categoryId] ?? b.primarySortOrder ?? 999;
+
+      if (aOrder !== bOrder) {
+        return aOrder - bOrder;
+      }
+
+      return a.title.localeCompare(b.title, 'cs');
+    });
 }
 
 export function getProductBySlug(slug: string) {

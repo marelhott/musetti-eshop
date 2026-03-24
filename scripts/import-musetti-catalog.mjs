@@ -114,7 +114,7 @@ const CATEGORY_OVERRIDES = {
   },
   'prodotti-gourmet': {
     slug: 'gourmet-produkty',
-    label: 'Gourmet produkty',
+    label: 'Gurmánské produkty',
     accent: '#9c6b48',
     panelClassName: 'from-[#fff9f4] via-[#fffdfa] to-[#f3e5d8]',
   },
@@ -214,7 +214,7 @@ const TEXT_OVERRIDES = {
   'Nescafé Dolce Gusto compatible capsules': 'Kapsle kompatibilní s Dolce Gusto',
   'Tea and infusions': 'Čaje a nálevy',
   'Hot chocolates': 'Horké čokolády',
-  'Gourmet products': 'Gourmet produkty',
+  'Gourmet products': 'Gurmánské produkty',
   Biscuits: 'Sušenky a biskoty',
   'Chocolates and sweets': 'Čokolády a sladkosti',
   'Coffee machines': 'Kávovary',
@@ -437,11 +437,16 @@ async function buildCatalog() {
   );
 
   const collectionProducts = new Map();
+  const collectionSortOrders = new Map();
   for (const collection of collections) {
     const payload = await fetchJson(
       `${SOURCE_BASE_URL}/collections/${collection.handle}/products.json?limit=250`,
     );
     collectionProducts.set(collection.handle, payload.products);
+    collectionSortOrders.set(
+      collection.handle,
+      new Map(payload.products.map((product, index) => [String(product.id), index])),
+    );
   }
 
   const productById = new Map();
@@ -539,6 +544,12 @@ async function buildCatalog() {
       categoryId: category.id,
       category: category.label,
       collectionHandles: [...product.collectionHandles].sort((a, b) => categoryPriority(a) - categoryPriority(b)),
+      collectionSortOrders: Object.fromEntries(
+        [...product.collectionHandles]
+          .map((handle) => [handle, collectionSortOrders.get(handle)?.get(String(product.id)) ?? 999])
+          .sort((a, b) => categoryPriority(a[0]) - categoryPriority(b[0])),
+      ),
+      primarySortOrder: collectionSortOrders.get(primaryHandle)?.get(String(product.id)) ?? 999,
       title: translatedTitle,
       shortDescription,
       price: priceToCzkLabel(priceCzk),
@@ -573,7 +584,13 @@ async function buildCatalog() {
     });
   }
 
-  const sortedProducts = productEntries.sort((a, b) => a.title.localeCompare(b.title, 'cs'));
+  const sortedProducts = productEntries.sort((a, b) => {
+    if (a.primarySortOrder !== b.primarySortOrder) {
+      return a.primarySortOrder - b.primarySortOrder;
+    }
+
+    return a.title.localeCompare(b.title, 'cs');
+  });
 
   return {
     generatedAt: new Date().toISOString(),

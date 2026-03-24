@@ -21,8 +21,6 @@ const coffeeMatchers = [
   'capsule-compatibili-nescafe-dolce-gusto',
 ];
 
-const gourmetMatchers = ['prodotti-gourmet', 'cioccolatini', 'te-e-infusi', 'cioccolate-calde', 'zaba', 'bagai'];
-
 const machineMatchers = ['macchine-da-caffe', 'macchine-caffe-delonghi'];
 const accessoryMatchers = ['tazzine-e-accessori'];
 
@@ -39,9 +37,6 @@ export default function Header() {
     return {
       coffee: catalogCategories.filter((category: (typeof catalogCategories)[number]) =>
         matchesAny(category.id, coffeeMatchers),
-      ),
-      gourmet: catalogCategories.filter((category: (typeof catalogCategories)[number]) =>
-        matchesAny(category.id, gourmetMatchers),
       ),
       machines: catalogCategories.filter((category: (typeof catalogCategories)[number]) =>
         matchesAny(category.id, machineMatchers),
@@ -96,24 +91,12 @@ export default function Header() {
               </div>
             </div>
 
-            <div className="group relative">
-              <button className="font-medium text-[#2d1e17] transition-colors hover:text-[#e42842]">
-                Gourmet produkty
-              </button>
-              <div className="invisible absolute left-0 top-full mt-4 min-w-[320px] rounded-[1.5rem] border border-[#eadfd5] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.08)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                <div className="flex flex-col gap-1">
-                  {groupedCatalog.gourmet.map((item: (typeof groupedCatalog.gourmet)[number]) => (
-                    <Link
-                      key={item.id}
-                      href={item.pageHref}
-                      className="rounded-xl px-3 py-2 text-[#2d1e17] transition-colors hover:bg-[#faf5f0] hover:text-[#a5513a]"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <Link
+              href="/gurmanske-produkty"
+              className="font-medium text-[#2d1e17] transition-colors hover:text-[#e42842]"
+            >
+              Gurmánské produkty
+            </Link>
 
             {groupedCatalog.accessories[0] ? (
               <Link
@@ -212,21 +195,13 @@ export default function Header() {
                       </div>
                     </div>
 
-                    <div>
-                      <div className="text-xs uppercase tracking-[0.2em] text-[#9f8575]">Gourmet produkty</div>
-                      <div className="mt-2 flex flex-col gap-2">
-                        {groupedCatalog.gourmet.map((item: (typeof groupedCatalog.gourmet)[number]) => (
-                          <Link
-                            key={item.id}
-                            href={item.pageHref}
-                            className="text-[#2d1e17] hover:text-[#e42842]"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
+                    <Link
+                      href="/gurmanske-produkty"
+                      className="text-[#2d1e17] hover:text-[#e42842]"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Gurmánské produkty
+                    </Link>
 
                     {groupedCatalog.accessories[0] ? (
                       <div>
