@@ -1,0 +1,214 @@
+import Link from 'next/link';
+
+export default function MiscelaArmonico() {
+  return (
+    <>
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#cb98ad] via-[#b87e97] to-[#9f627d] py-16 text-white md:py-24">
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('https://www.musetti.it/wp-content/uploads/2023/05/layout-miscela_Onda-BG_Armonico.png')" }} />
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+            <div className="text-center md:text-left order-2 md:order-1">
+              <p className="mb-4 text-sm uppercase tracking-[0.35em] text-white/75">Směs Musetti pro domov</p>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6">THAT&apos;S<br/>ARMONICO.</h1>
+              <p className="text-2xl md:text-3xl font-light">
+                Dokonalá souhra vyvážené a krémové kávy
+              </p>
+            </div>
+
+            <div className="relative flex justify-center items-center gap-6 order-1 md:order-2">
+              <img
+                src="https://www.musetti.it/wp-content/uploads/2023/06/layout-miscela_Pack_armonico_DEF.webp"
+                alt="Balení směsi Armonico"
+                className="w-5/12 max-w-xs object-contain drop-shadow-2xl animate-fadeInUp animate-gentleFloat"
+              />
+              <img
+                src="https://www.musetti.it/wp-content/uploads/2023/06/THATS_ARMONICO-1024x1024.webp"
+                alt="Brand vizuál Armonico"
+                className="w-5/12 max-w-xs object-contain drop-shadow-2xl animate-fadeInUp animate-softPulse"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="h-32 flex items-center justify-center mb-8">
+                <img
+                  src="https://www.musetti.it/wp-content/uploads/2023/05/Miscela_Armonico-e1685453933632.png"
+                  alt="Logotyp směsi Armonico"
+                  className="h-20 w-auto object-contain"
+                />
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">SMĚS ARMONICO</h2>
+              <h3 className="text-2xl md:text-3xl text-gray-700 mb-8">
+                Káva se správnou rovnováhou mezi krémovostí a aromatem v šálku
+              </h3>
+
+              <p className="text-gray-700 text-lg leading-relaxed mb-8 max-w-4xl mx-auto">
+                Směs s intenzivní a vyváženou chutí. Bohaté tělo a výrazná krémovost dávají patru příjemnou perzistenci a plnou dochuť. V aroma se přirozeně objevují tóny kakaa, čokolády, lískového oříšku i jemné pečené a cukrářské noty, které dohromady vytvářejí živý, příjemný a zároveň rozhodný chuťový profil.
+              </p>
+
+              <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
+                <div>
+                  <p className="font-semibold mb-3 text-lg">INTENZITA:</p>
+                  <div className="flex gap-2 justify-center">
+                    {[1,2,3,4].map(i => (
+                      <div key={i} className="w-10 h-10 rounded-full bg-[#c990a5]"></div>
+                    ))}
+                    <div className="w-10 h-10 rounded-full border-2 border-[#c990a5]"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-lg"><span className="font-semibold">SLOŽENÍ:</span> Arabica – Robusta</p>
+                </div>
+              </div>
+
+              <a
+                href="https://musettishop.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#e42842] text-white px-16 py-4 rounded-full hover:bg-[#c41f35] transition-colors font-semibold inline-block text-lg"
+              >
+                Nakoupit nyní
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-pink-50 py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+            Převládající <span className="text-[#e42842]">chuťové noty</span>
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto">
+            <div className="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <img
+                src="https://www.musetti.it/wp-content/uploads/2023/05/layout-miscela_Cacao-1.png"
+                alt="Kakao"
+                className="w-40 h-40 mx-auto mb-6 object-contain"
+              />
+              <h3 className="text-3xl font-semibold">Kakao</h3>
+            </div>
+
+            <div className="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <img
+                src="https://www.musetti.it/wp-content/uploads/2023/05/layout-miscela_Nocciola-1.png"
+                alt="Lískový oříšek"
+                className="w-40 h-40 mx-auto mb-6 object-contain"
+              />
+              <h3 className="text-3xl font-semibold">Lískový oříšek</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div className="text-center">
+              <h3 className="text-3xl font-bold mb-8">Původ kávy</h3>
+              <div className="bg-pink-50 rounded-2xl p-8">
+                <img
+                  src="https://www.musetti.it/wp-content/uploads/2023/05/Armonico_Mappa_Caffe-1200x698.webp"
+                  alt="Mapa původu kávy Armonico"
+                  className="w-full rounded-lg bg-white object-contain"
+                />
+              </div>
+            </div>
+
+            <div className="text-center">
+              <h3 className="text-3xl font-bold mb-8">Chuťový profil</h3>
+              <div className="bg-pink-50 rounded-2xl p-8">
+                <img
+                  src="https://www.musetti.it/wp-content/uploads/2023/05/Armonico_Spiderchart-1024x800.webp"
+                  alt="Chuťový spider chart Armonico"
+                  className="w-full rounded-lg bg-white object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gray-50 py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Naše <span className="text-[#e42842]">produktová řada</span>
+          </h2>
+          <p className="text-gray-600 mb-12 text-lg">
+            Různé formáty jedné směsi, které spojuje jediný jmenovatel: kvalita
+          </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto mb-12">
+            <div className="hover:scale-105 transition-transform duration-300">
+              <img src="https://www.musetti.it/wp-content/uploads/2023/05/layout-miscela_Armonico-Cialde_100-400x329.webp" alt="Armonico pody" className="mb-4 aspect-square w-full rounded-lg object-contain bg-white p-4 shadow-sm" />
+              <p className="font-semibold text-lg">Pody</p>
+            </div>
+
+            <div className="hover:scale-105 transition-transform duration-300">
+              <img src="https://www.musetti.it/wp-content/uploads/2023/05/Capsule_Armonico-1-200x392.webp" alt="Armonico kapsle" className="mb-4 aspect-square w-full rounded-lg object-contain bg-white p-4 shadow-sm" />
+              <p className="font-semibold text-lg">Kapsle</p>
+            </div>
+
+            <div className="hover:scale-105 transition-transform duration-300">
+              <img src="https://www.musetti.it/wp-content/uploads/2023/05/Macinato_Armonico-400x601.webp" alt="Armonico mletá káva" className="mb-4 aspect-square w-full rounded-lg object-contain bg-white p-4 shadow-sm" />
+              <p className="font-semibold text-lg">Mletá</p>
+            </div>
+
+            <div className="hover:scale-105 transition-transform duration-300">
+              <img src="https://www.musetti.it/wp-content/uploads/2023/05/Grani_Armonico-2-200x448.webp" alt="Armonico zrnková káva" className="mb-4 aspect-square w-full rounded-lg object-contain bg-white p-4 shadow-sm" />
+              <p className="font-semibold text-lg">Zrnková</p>
+            </div>
+          </div>
+
+          <a
+            href="https://musettishop.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#e42842] text-white px-16 py-4 rounded-full hover:bg-[#c41f35] transition-colors font-semibold inline-block text-lg"
+          >
+            Nakoupit nyní
+          </a>
+        </div>
+      </section>
+
+      <section className="bg-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Naše další <span className="text-[#e42842]">směsi</span>
+          </h2>
+          <p className="text-gray-600 mb-12 max-w-3xl mx-auto text-lg">
+            Svět kávy tvoří mnoho aromat a chutí. Z tohoto světa vznikly naše pečlivě vybrané směsi pro domácí přípravu, každá s vlastním charakterem, aby si v nich našel to své opravdu každý.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <Link href="/miscela-intenso" className="hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-amber-50 to-amber-100 rounded-lg p-8 text-center">
+              <img src="https://www.musetti.it/wp-content/uploads/2023/06/ENJOY_YOUR_INTENSO-400x400.webp" alt="Směs Intenso" className="mx-auto mb-4 h-48 w-48 object-contain" />
+              <h3 className="text-3xl font-['Pacifico'] mb-2">Intenso</h3>
+              <p className="text-sm text-gray-600">Silnější a plnější profil</p>
+            </Link>
+
+            <Link href="/miscela-gentile" className="hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-8 text-center">
+              <img src="https://www.musetti.it/wp-content/uploads/2023/06/VERY_VERY_GENTILE-400x400.webp" alt="Směs Gentile" className="mx-auto mb-4 h-48 w-48 object-contain" />
+              <h3 className="text-3xl font-['Pacifico'] mb-2">Gentile</h3>
+              <p className="text-sm text-gray-600">Jemná a elegantní směs</p>
+            </Link>
+
+            <Link href="/miscela-deca" className="hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-sky-50 to-sky-100 rounded-lg p-8 text-center">
+              <img src="https://www.musetti.it/wp-content/uploads/2023/06/GIVE_ME_A_DECA-400x400.webp" alt="Směs Deca" className="mx-auto mb-4 h-48 w-48 object-contain" />
+              <h3 className="text-3xl font-['Pacifico'] mb-2">Deca</h3>
+              <p className="text-sm text-gray-600">Bez kofeinu, bez kompromisu</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
