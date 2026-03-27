@@ -95,12 +95,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <div className="mt-8 grid gap-10 lg:grid-cols-[1.12fr_0.88fr]">
             <div className="rounded-[2rem] border border-[#eadfd5] bg-white p-6 shadow-[0_24px_80px_rgba(77,48,34,0.08)] md:p-8">
-              <div className="mb-5 flex items-center justify-between gap-3">
+              <div className="mb-5 flex items-center gap-3">
                 <span className="rounded-full border border-[#d9c8bb] px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-[#7f695b]">
                   {category.label}
-                </span>
-                <span className="text-[11px] uppercase tracking-[0.24em] text-[#b0917e]">
-                  {galleryImages.length} obrázků
                 </span>
               </div>
 
