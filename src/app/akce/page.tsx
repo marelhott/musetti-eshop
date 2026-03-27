@@ -120,7 +120,7 @@ export default function AkcePage() {
             </p>
           </div>
 
-          <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr))]">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {allPromoGridProducts.map((product: CatalogProduct) => (
               <ProductCard key={product.id} product={product} />
             ))}

@@ -62,28 +62,31 @@ export function ProductCard({ product, categoryLabel }: ProductCardProps) {
             ))}
           </div>
 
-          <div className="mt-auto flex items-center justify-between gap-4 border-t border-[#efe4db] pr-[4.2rem] pt-5">
-            <div>
+          <div className="mt-auto flex items-center gap-3 border-t border-[#efe4db] pt-5">
+            <div className="min-w-0">
               <div className="text-2xl font-semibold text-[#2d1e17]">{product.price}</div>
               {product.compareAtPrice ? (
                 <div className="mt-1 text-sm text-[#9f8b7e] line-through">{product.compareAtPrice}</div>
               ) : null}
             </div>
-            <span className="rounded-[0.65rem] bg-[#3a342f] px-3.5 py-2 text-[0.78rem] font-medium text-white transition-colors duration-300 group-hover:bg-[#2d2723]">
+            <button
+              type="button"
+              onClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                addItem(product);
+              }}
+              aria-label={`Přidat do košíku: ${product.title}`}
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#7d6558] transition-colors duration-300 hover:text-[#bf4430]"
+            >
+              <Plus className="h-3.5 w-3.5" />
+            </button>
+            <span className="ml-auto rounded-[0.65rem] bg-[#3a342f] px-3.5 py-2 text-[0.78rem] font-medium text-white transition-colors duration-300 group-hover:bg-[#2d2723]">
               Detail produktu
             </span>
           </div>
         </div>
       </Link>
-
-      <button
-        type="button"
-        onClick={() => addItem(product)}
-        aria-label={`Přidat do košíku: ${product.title}`}
-        className="absolute bottom-6 right-6 inline-flex h-11 w-11 items-center justify-center rounded-[0.95rem] border border-[#d6c2b4] bg-white text-[#5f4b41] shadow-[0_10px_24px_rgba(45,30,23,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#bf4430] hover:bg-[#bf4430] hover:text-white"
-      >
-        <Plus className="h-4 w-4" />
-      </button>
     </article>
   );
 }

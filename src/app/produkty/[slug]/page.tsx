@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { ProductCard } from '@/components/ProductCard';
+import ProductPurchasePanel from '@/components/ProductPurchasePanel';
 import {
   catalogCategories,
   getCategoryById,
@@ -55,6 +56,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
     .filter(Boolean);
   const detailParagraphs =
     sourceDetail.bodyParagraphs.length > 0 ? sourceDetail.bodyParagraphs : [product.shortDescription];
+  const normalizedDetailParagraphs = detailParagraphs.map((paragraph: string) => paragraph.trim()).filter(Boolean);
+  const sectionLabels = normalizedDetailParagraphs.filter(
+    (paragraph) =>
+      paragraph.length <= 36 &&
+      !paragraph.includes('.') &&
+      !paragraph.startsWith('•') &&
+      !paragraph.startsWith('*'),
+  );
+  const longParagraphs = normalizedDetailParagraphs.filter(
+    (paragraph) =>
+      !(
+        paragraph.length <= 36 &&
+        !paragraph.includes('.') &&
+        !paragraph.startsWith('•') &&
+        !paragraph.startsWith('*')
+      ) && !paragraph.startsWith('•') && !paragraph.startsWith('*'),
+  );
+  const bulletParagraphs = normalizedDetailParagraphs
+    .filter((paragraph) => paragraph.startsWith('•') || paragraph.startsWith('*'))
+    .map((paragraph) => paragraph.replace(/^[•*]\s*/, ''));
 
   return (
     <main className="bg-white">
@@ -109,20 +130,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               <div className="mt-7 grid gap-4">
-                <div className="rounded-[1.75rem] border border-[#eadfd5] bg-white p-6">
-                  <p className="text-[11px] uppercase tracking-[0.24em] text-[#9b7f70]">Cena</p>
-                  <div className="mt-3 text-[2.2rem] font-semibold text-[#2d1e17]">{product.price}</div>
-                  {product.compareAtPrice ? (
-                    <div className="mt-2 text-sm text-[#9f8b7e] line-through">
-                      {product.compareAtPrice}
-                    </div>
-                  ) : null}
-                  {sourceDetail.stockLabel ? (
-                    <div className="mt-4 inline-flex rounded-full bg-[#eef8f1] px-3 py-1 text-base font-medium text-[#2b8a57]">
-                      {sourceDetail.stockLabel}
-                    </div>
-                  ) : null}
-                </div>
+                <ProductPurchasePanel product={product} stockLabel={sourceDetail.stockLabel} />
 
                 <div className="rounded-[1.75rem] border border-[#eadfd5] bg-white p-6">
                   <p className="text-[11px] uppercase tracking-[0.24em] text-[#9b7f70]">Přesné označení</p>
@@ -238,40 +246,49 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     </div>
                   ) : null}
 
-                  <div className="grid gap-3">
-                    {detailParagraphs.map((paragraph: string) => {
-                      const normalized = paragraph.trim();
-                      const isSectionLabel =
-                        normalized.length <= 36 &&
-                        !normalized.includes('.') &&
-                        !normalized.startsWith('•') &&
-                        !normalized.startsWith('*');
-
-                      if (isSectionLabel) {
-                        return (
-                          <div
-                            key={paragraph}
-                            className="rounded-[1rem] border border-[#eadfd5] bg-[#fcf8f4] px-4 py-3"
-                          >
-                            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-[#8e7466]">
-                              {normalized}
+                  {longParagraphs.length > 0 ? (
+                    <div className="rounded-[1.5rem] border border-[#efe4db] bg-white p-5 shadow-[0_10px_30px_rgba(77,48,34,0.04)] md:p-6">
+                      <div className="grid gap-6 lg:grid-cols-2">
+                        {longParagraphs.map((paragraph: string) => (
+                          <div key={paragraph}>
+                            <p className="text-[0.9rem] leading-7 text-[#5f4a3d] md:text-[0.98rem]">
+                              {paragraph}
                             </p>
                           </div>
-                        );
-                      }
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
 
-                      return (
-                        <div
-                          key={paragraph}
-                          className="max-w-[58rem] rounded-[1.15rem] border border-[#efe4db] bg-white px-4 py-4 shadow-[0_10px_30px_rgba(77,48,34,0.04)]"
-                        >
-                          <p className="text-[0.72rem] leading-[1.85] text-[#5f4a3d] md:text-[0.78rem]">
-                            {normalized}
-                          </p>
+                  {sectionLabels.length > 0 || bulletParagraphs.length > 0 ? (
+                    <div className="rounded-[1.5rem] border border-[#efe4db] bg-[linear-gradient(180deg,#fff_0%,#fbf6f1_100%)] p-5 md:p-6">
+                      {sectionLabels.length > 0 ? (
+                        <div className="mb-5 flex flex-wrap gap-2">
+                          {sectionLabels.map((label: string) => (
+                            <span
+                              key={label}
+                              className="rounded-full border border-[#e5d7cc] bg-white px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#8e7466]"
+                            >
+                              {label}
+                            </span>
+                          ))}
                         </div>
-                      );
-                    })}
-                  </div>
+                      ) : null}
+
+                      {bulletParagraphs.length > 0 ? (
+                        <div className="grid gap-4 md:grid-cols-2">
+                          {bulletParagraphs.map((paragraph: string) => (
+                            <div
+                              key={paragraph}
+                              className="rounded-[1.15rem] border border-[#eadfd5] bg-white p-4"
+                            >
+                              <p className="text-[0.88rem] leading-6 text-[#5f4a3d]">{paragraph}</p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  ) : null}
 
                   {sourceDetail.specs.length > 0 ? (
                     <div className="rounded-[1.5rem] border border-[#efe4db] bg-[linear-gradient(180deg,#fff_0%,#f7f1eb_100%)] p-5 md:p-6">
@@ -321,7 +338,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </Link>
           </div>
 
-          <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr))]">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {relatedProducts.map((relatedProduct: (typeof relatedProducts)[number]) => (
               <ProductCard
                 key={`${category.id}-${relatedProduct.slug}`}
