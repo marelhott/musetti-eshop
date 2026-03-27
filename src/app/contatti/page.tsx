@@ -1,4 +1,8 @@
 export default function Contatti() {
+  const contactEmail = 'info@musettishop.cz';
+  const primaryPhone = '+420 608 902 070';
+  const secondaryPhone = '+420 777 033 307';
+
   return (
     <>
       {/* Hero Section */}
@@ -19,7 +23,7 @@ export default function Contatti() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Napište nám</h2>
               <form
-                action="mailto:info@musettishop.cz"
+                action={`mailto:${contactEmail}`}
                 method="post"
                 encType="text/plain"
                 className="space-y-4"
@@ -84,8 +88,8 @@ export default function Contatti() {
 
                 <p className="text-sm text-gray-600">
                   Formulář otevře váš e-mailový klient a připraví zprávu na adresu{' '}
-                  <a href="mailto:info@musettishop.cz" className="font-medium text-[#c92b38] hover:underline">
-                    info@musettishop.cz
+                  <a href={`mailto:${contactEmail}`} className="font-medium text-[#c92b38] hover:underline">
+                    {contactEmail}
                   </a>
                   .
                 </p>
@@ -105,20 +109,23 @@ export default function Contatti() {
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">Sídlo</h3>
+                  <h3 className="font-semibold text-lg mb-2">Kontaktní centrum</h3>
                   <p className="text-gray-700">
-                    Musetti S.P.A.<br />
-                    Via G.Marcora 2/4<br />
-                    29010 Pontenure (PC)<br />
-                    Italia
+                    MusettiShop.cz<br />
+                    Česká klientská a obchodní podpora<br />
+                    Péče o retail, HoReCa i B2B poptávky
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">Telefono</h3>
+                  <h3 className="font-semibold text-lg mb-2">Telefon</h3>
                   <p className="text-gray-700">
-                    <a href="tel:+390523511811" className="hover:text-[#e42842]">
-                      +39 0523 511811
+                    <a href="tel:+420608902070" className="hover:text-[#e42842]">
+                      {primaryPhone}
+                    </a>
+                    <br />
+                    <a href="tel:+420777033307" className="hover:text-[#e42842]">
+                      {secondaryPhone}
                     </a>
                   </p>
                 </div>
@@ -126,8 +133,8 @@ export default function Contatti() {
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Email</h3>
                   <p className="text-gray-700">
-                    <a href="mailto:info@musetti.it" className="hover:text-[#e42842]">
-                      info@musetti.it
+                    <a href={`mailto:${contactEmail}`} className="hover:text-[#e42842]">
+                      {contactEmail}
                     </a>
                   </p>
                 </div>
@@ -144,12 +151,12 @@ export default function Contatti() {
                   <h3 className="font-semibold text-lg mb-2">B2B a HoReCa</h3>
                   <p className="text-gray-700 leading-7">
                     Pro poptávky restaurací, kanceláří a provozoven nám napište na{' '}
-                    <a href="mailto:info@musettishop.cz" className="hover:text-[#e42842]">
-                      info@musettishop.cz
+                    <a href={`mailto:${contactEmail}`} className="hover:text-[#e42842]">
+                      {contactEmail}
                     </a>{' '}
                     nebo zavolejte na{' '}
                     <a href="tel:+420608902070" className="hover:text-[#e42842]">
-                      +420 608 902 070
+                      {primaryPhone}
                     </a>
                     .
                   </p>
@@ -163,8 +170,8 @@ export default function Contatti() {
       <section className="bg-gray-100">
         <div className="h-96 w-full overflow-hidden">
           <iframe
-            title="Mapa Musetti Pontenure"
-            src="https://www.google.com/maps?q=Via%20G.Marcora%202%2F4%2C%2029010%20Pontenure%20(PC)%2C%20Italia&z=15&output=embed"
+            title="Kontaktní mapa MusettiShop.cz"
+            src="https://www.google.com/maps?q=Praha%2C%20%C4%8Cesko&z=11&output=embed"
             className="h-full w-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

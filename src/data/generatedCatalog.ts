@@ -1112,7 +1112,7 @@ export const catalogProducts = [
   },
   {
     "id": "10111896518987",
-    "slug": "capsule-caffe-musetti-compatibili-lavazza-a-modo-mio®-armonico-60-pz",
+    "slug": "capsule-caffe-musetti-compatibili-lavazza-a-modo-mio-armonico-60-pz",
     "categoryId": "capsule-compatibili-lavazza-a-modo-mio",
     "category": "Kapsle Lavazza A Modo Mio",
     "collectionHandles": [
@@ -1131,7 +1131,7 @@ export const catalogProducts = [
     "variants": [
       "600 g"
     ],
-    "href": "/produkty/capsule-caffe-musetti-compatibili-lavazza-a-modo-mio®-armonico-60-pz",
+    "href": "/produkty/capsule-caffe-musetti-compatibili-lavazza-a-modo-mio-armonico-60-pz",
     "sourceUrl": "https://musettishop.com/en-eu/products/capsule-caffe-musetti-compatibili-lavazza-a-modo-mio®-armonico-60-pz?country=CZ",
     "sourceHandle": "capsule-caffe-musetti-compatibili-lavazza-a-modo-mio®-armonico-60-pz",
     "images": [
