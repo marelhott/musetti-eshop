@@ -84,11 +84,11 @@ export default function Header() {
 
   const desktopMenuClassName = (menuKey: string, minWidthClassName: string) =>
     [
-      'absolute left-1/2 top-full z-20 -translate-x-1/2 rounded-[1.5rem] border border-[#ece4dd] bg-white p-3 shadow-[0_22px_60px_rgba(77,48,34,0.12)] transition-all duration-150',
+      'absolute left-1/2 top-full z-20 -translate-x-1/2 pt-4 transition-all duration-150',
       minWidthClassName,
       activeDesktopMenu === menuKey
-        ? 'visible mt-4 opacity-100 pointer-events-auto'
-        : 'invisible mt-2 opacity-0 pointer-events-none',
+        ? 'visible opacity-100 pointer-events-auto'
+        : 'invisible opacity-0 pointer-events-none',
     ].join(' ');
 
   return (
@@ -120,16 +120,18 @@ export default function Header() {
               Káva
             </button>
             <div className={desktopMenuClassName('coffee', 'min-w-[320px]')}>
-              <div className="flex flex-col gap-1">
-                {groupedCatalog.coffee.map((item) => (
-                  <Link
-                    key={item.id}
-                    href={item.pageHref}
-                    className="rounded-xl px-3 py-2 text-[#2d1e17] transition-colors hover:bg-[#faf5f0] hover:text-[#a5513a]"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              <div className="rounded-[1.5rem] border border-[#ece4dd] bg-white p-3 shadow-[0_22px_60px_rgba(77,48,34,0.12)]">
+                <div className="flex flex-col gap-1">
+                  {groupedCatalog.coffee.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={item.pageHref}
+                      className="rounded-xl px-3 py-2 text-[#2d1e17] transition-colors hover:bg-[#faf5f0] hover:text-[#a5513a]"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -147,22 +149,24 @@ export default function Header() {
               Gurmánské produkty
             </button>
             <div className={desktopMenuClassName('gourmet', 'min-w-[320px]')}>
-              <div className="flex flex-col gap-1">
-                <Link
-                  href="/gurmanske-produkty"
-                  className="rounded-xl px-3 py-2 font-medium text-[#a5513a] transition-colors hover:bg-[#faf5f0]"
-                >
-                  Všechny gurmánské produkty
-                </Link>
-                {groupedCatalog.gourmet.map((item) => (
+              <div className="rounded-[1.5rem] border border-[#ece4dd] bg-white p-3 shadow-[0_22px_60px_rgba(77,48,34,0.12)]">
+                <div className="flex flex-col gap-1">
                   <Link
-                    key={item.id}
-                    href={item.pageHref}
-                    className="rounded-xl px-3 py-2 text-[#2d1e17] transition-colors hover:bg-[#faf5f0] hover:text-[#a5513a]"
+                    href="/gurmanske-produkty"
+                    className="rounded-xl px-3 py-2 font-medium text-[#a5513a] transition-colors hover:bg-[#faf5f0]"
                   >
-                    {item.label}
+                    Všechny gurmánské produkty
                   </Link>
-                ))}
+                  {groupedCatalog.gourmet.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={item.pageHref}
+                      className="rounded-xl px-3 py-2 text-[#2d1e17] transition-colors hover:bg-[#faf5f0] hover:text-[#a5513a]"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -189,16 +193,18 @@ export default function Header() {
               Kávovary
             </button>
             <div className={desktopMenuClassName('machines', 'min-w-[280px]')}>
-              <div className="flex flex-col gap-1">
-                {groupedCatalog.machines.map((item) => (
-                  <Link
-                    key={item.id}
-                    href={item.pageHref}
-                    className="rounded-xl px-3 py-2 text-[#2d1e17] transition-colors hover:bg-[#faf5f0] hover:text-[#a5513a]"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              <div className="rounded-[1.5rem] border border-[#ece4dd] bg-white p-3 shadow-[0_22px_60px_rgba(77,48,34,0.12)]">
+                <div className="flex flex-col gap-1">
+                  {groupedCatalog.machines.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={item.pageHref}
+                      className="rounded-xl px-3 py-2 text-[#2d1e17] transition-colors hover:bg-[#faf5f0] hover:text-[#a5513a]"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -216,16 +222,18 @@ export default function Header() {
               Informace
             </button>
             <div className={desktopMenuClassName('brand', 'min-w-[220px]')}>
-              <div className="flex flex-col gap-1">
-                {brandNavigationItems.map((item) => (
-                  <Link
-                    key={`${item.href}-${item.label}`}
-                    href={item.href}
-                    className="rounded-xl px-3 py-2 text-[#2d1e17] transition-colors hover:bg-[#faf5f0] hover:text-[#a5513a]"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              <div className="rounded-[1.5rem] border border-[#ece4dd] bg-white p-3 shadow-[0_22px_60px_rgba(77,48,34,0.12)]">
+                <div className="flex flex-col gap-1">
+                  {brandNavigationItems.map((item) => (
+                    <Link
+                      key={`${item.href}-${item.label}`}
+                      href={item.href}
+                      className="rounded-xl px-3 py-2 text-[#2d1e17] transition-colors hover:bg-[#faf5f0] hover:text-[#a5513a]"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
