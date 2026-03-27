@@ -53,7 +53,10 @@ function sanitizeDescriptionHtml(html: string) {
 
   sanitized = sanitized.replace(/<script[\s\S]*?<\/script>/gi, '');
   sanitized = sanitized.replace(/<style[\s\S]*?<\/style>/gi, '');
-  sanitized = sanitized.replace(/\s(?:class|style|id|aria-[a-z-]+|data-[a-z-]+|target|rel)="[^"]*"/gi, '');
+  sanitized = sanitized.replace(
+    /\s(?:class|style|id|aria-[a-z-]+|data-[a-z-]+|target|rel)(?:=(?:"[^"]*"|'[^']*'|[^\s>]+))?/gi,
+    '',
+  );
   sanitized = sanitized.replace(/<a [^>]*href="[^"]*"[^>]*>([\s\S]*?)<\/a>/gi, '$1');
   sanitized = sanitized.replace(/<span[^>]*>/gi, '');
   sanitized = sanitized.replace(/<\/span>/gi, '');
@@ -198,7 +201,8 @@ export async function getSourceProductDetail(sourceUrl: string): Promise<SourceP
         quickContactLabel: 'Rychlý kontakt',
       },
     };
-  } catch {
+  } catch (error) {
+    console.error('Unable to load source product detail', { sourceUrl, error });
     return {
       introTitle: undefined,
       introSubtitle: undefined,

@@ -14,8 +14,8 @@ export default function AkcePage() {
   );
 
   const promoProducts = promoCategories.flatMap((category) => getProductsByCategory(category.id)).slice(0, 12);
-  const heroProducts = promoProducts.slice(0, 3);
-  const featuredProducts = promoProducts.slice(3, 9);
+  const heroProduct = promoProducts[0];
+  const allPromoGridProducts = promoProducts.slice(1);
 
   return (
     <main className="bg-white">
@@ -69,61 +69,59 @@ export default function AkcePage() {
               </div>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-2">
-              {heroProducts.map((product: CatalogProduct, index: number) => (
+            <div className="grid content-start gap-5">
+              {heroProduct ? (
                 <Link
-                  key={product.id}
-                  href={product.href}
-                  className={`group overflow-hidden rounded-[2rem] border border-[#eadfd5] bg-white p-5 shadow-[0_18px_50px_rgba(77,48,34,0.06)] ${
-                    index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
-                  }`}
+                  key={heroProduct.id}
+                  href={heroProduct.href}
+                  className="group overflow-hidden rounded-[2rem] border border-[#eadfd5] bg-white p-5 shadow-[0_18px_50px_rgba(77,48,34,0.06)]"
                 >
                   <div className="flex h-full flex-col justify-between gap-5">
-                    <div className="relative min-h-[220px] rounded-[1.5rem] bg-[linear-gradient(180deg,#fff_0%,#fff6f1_100%)] p-4">
+                    <div className="relative h-[360px] rounded-[1.5rem] bg-[linear-gradient(180deg,#fff_0%,#fff6f1_100%)] p-4 md:h-[420px]">
                       <img
-                        src={product.images[0]}
-                        alt={product.title}
+                        src={heroProduct.images[0]}
+                        alt={heroProduct.title}
                         className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
                       />
                     </div>
 
                     <div>
-                      <p className="text-[11px] uppercase tracking-[0.24em] text-[#b0917e]">{product.category}</p>
+                      <p className="text-[11px] uppercase tracking-[0.24em] text-[#b0917e]">{heroProduct.category}</p>
                       <h2 className="mt-2 text-2xl font-semibold leading-tight text-[#2d1e17]">
-                        {product.title}
+                        {heroProduct.title}
                       </h2>
-                      <p className="mt-3 text-sm leading-6 text-[#6f5a4e]">{product.shortDescription}</p>
+                      <p className="mt-3 text-sm leading-6 text-[#6f5a4e]">{heroProduct.shortDescription}</p>
                     </div>
 
                     <div className="flex items-center justify-between gap-4 border-t border-[#efe4db] pt-4">
-                      <div className="text-2xl font-semibold text-[#2d1e17]">{product.price}</div>
+                      <div className="text-2xl font-semibold text-[#2d1e17]">{heroProduct.price}</div>
                       <span className="text-sm font-medium text-[#a5513a]">Detail produktu</span>
                     </div>
                   </div>
                 </Link>
-              ))}
+              ) : null}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-20">
+      <section className="pb-20 pt-16 md:pb-20 md:pt-20">
         <div className="container">
           <div className="mb-8 flex flex-col gap-4 border-b border-[#efe4db] pb-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.28em] text-[#9f8575]">Akční výběr</p>
               <h2 className="mt-3 text-3xl font-semibold text-[#2d1e17] md:text-5xl">
-                Hlavní velikonoční produkty
+                Ostatní velikonoční produkty
               </h2>
             </div>
             <p className="max-w-2xl text-sm leading-6 text-[#836e61]">
-              Ručně zvýrazněný výběr sezónních sladkostí a dárkových balení, které dávají smysl jako
-              samostatná promo kampaň.
+              Další produkty ze sezónní nabídky, navazující hned pod hlavní hero částí a poskládané do
+              jednoho souvislého přehledu.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {featuredProducts.map((product: CatalogProduct) => (
+            {allPromoGridProducts.map((product: CatalogProduct) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

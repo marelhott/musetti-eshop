@@ -18,10 +18,10 @@ export type CatalogProductDetail = {
   shippingLabel?: string;
   introTitle?: string;
   introSubtitle?: string;
-  highlightLines: string[];
-  bodyParagraphs: string[];
-  specs: CatalogDetailSpec[];
-  galleryImages: string[];
+  highlightLines: readonly string[];
+  bodyParagraphs: readonly string[];
+  specs: readonly CatalogDetailSpec[];
+  galleryImages: readonly string[];
   contact: {
     phone: string;
     email: string;
@@ -35,7 +35,7 @@ export type CatalogProduct = {
   slug: string;
   categoryId: string;
   category: string;
-  collectionHandles?: string[];
+  collectionHandles?: readonly string[];
   collectionSortOrders?: Record<string, number>;
   primarySortOrder?: number;
   title: string;
@@ -44,32 +44,32 @@ export type CatalogProduct = {
   priceCzk: number;
   compareAtPrice?: string;
   compareAtPriceCzk?: number;
-  variants: string[];
+  variants: readonly string[];
   href: string;
   sourceUrl: string;
   sourceHandle?: string;
-  images: string[];
+  images: readonly string[];
   featured?: boolean;
   detail?: CatalogProductDetail;
 };
 
-export const catalogCategoriesData = generatedCatalogCategories as unknown as CatalogCategory[];
-export const catalogProductsData = generatedCatalogProducts as unknown as CatalogProduct[];
+export const catalogCategories: ReadonlyArray<CatalogCategory> = generatedCatalogCategories;
+export const catalogProducts: ReadonlyArray<CatalogProduct> = generatedCatalogProducts;
 export { catalogMeta };
 
-export const featuredCategories = catalogCategoriesData.filter((category) => category.featured);
-export const additionalCategories = catalogCategoriesData.filter((category) => !category.featured);
+export const featuredCategories = catalogCategories.filter((category) => category.featured);
+export const additionalCategories = catalogCategories.filter((category) => !category.featured);
 
 export function getCategoryBySlug(slug: string) {
-  return catalogCategoriesData.find((category) => category.slug === slug);
+  return catalogCategories.find((category) => category.slug === slug);
 }
 
 export function getCategoryById(id: string) {
-  return catalogCategoriesData.find((category) => category.id === id);
+  return catalogCategories.find((category) => category.id === id);
 }
 
 export function getProductsByCategory(categoryId: string) {
-  return catalogProductsData
+  return catalogProducts
     .filter(
       (product) =>
         product.categoryId === categoryId ||
@@ -88,10 +88,5 @@ export function getProductsByCategory(categoryId: string) {
 }
 
 export function getProductBySlug(slug: string) {
-  return catalogProductsData.find((product) => product.slug === slug);
+  return catalogProducts.find((product) => product.slug === slug);
 }
-
-export const catalogCategoriesList = catalogCategoriesData;
-export const catalogProductsList = catalogProductsData;
-export const catalogCategories = catalogCategoriesData;
-export const catalogProducts = catalogProductsData;

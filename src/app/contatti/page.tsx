@@ -18,10 +18,19 @@ export default function Contatti() {
             {/* Contact Form */}
             <div>
               <h2 className="text-3xl font-bold mb-6">Napište nám</h2>
-              <form className="space-y-4">
+              <form
+                action="mailto:info@musettishop.cz"
+                method="post"
+                encType="text/plain"
+                className="space-y-4"
+              >
                 <div>
-                  <label className="block text-sm font-medium mb-2">Jméno *</label>
+                  <label htmlFor="contact-name" className="block text-sm font-medium mb-2">
+                    Jméno *
+                  </label>
                   <input
+                    id="contact-name"
+                    name="name"
                     type="text"
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#e42842]"
@@ -29,8 +38,12 @@ export default function Contatti() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">E-mail *</label>
+                  <label htmlFor="contact-email" className="block text-sm font-medium mb-2">
+                    E-mail *
+                  </label>
                   <input
+                    id="contact-email"
+                    name="email"
                     type="email"
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#e42842]"
@@ -38,16 +51,24 @@ export default function Contatti() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Telefon</label>
+                  <label htmlFor="contact-phone" className="block text-sm font-medium mb-2">
+                    Telefon
+                  </label>
                   <input
+                    id="contact-phone"
+                    name="phone"
                     type="tel"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#e42842]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Zpráva *</label>
+                  <label htmlFor="contact-message" className="block text-sm font-medium mb-2">
+                    Zpráva *
+                  </label>
                   <textarea
+                    id="contact-message"
+                    name="message"
                     required
                     rows={5}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#e42842]"
@@ -55,11 +76,19 @@ export default function Contatti() {
                 </div>
 
                 <div className="flex items-start gap-2">
-                  <input type="checkbox" required className="mt-1" />
-                  <label className="text-sm text-gray-600">
+                  <input id="contact-consent" name="consent" type="checkbox" required className="mt-1" />
+                  <label htmlFor="contact-consent" className="text-sm text-gray-600">
                     Souhlasím se zpracováním osobních údajů podle zásad ochrany soukromí *
                   </label>
                 </div>
+
+                <p className="text-sm text-gray-600">
+                  Formulář otevře váš e-mailový klient a připraví zprávu na adresu{' '}
+                  <a href="mailto:info@musettishop.cz" className="font-medium text-[#c92b38] hover:underline">
+                    info@musettishop.cz
+                  </a>
+                  .
+                </p>
 
                 <button
                   type="submit"
@@ -112,27 +141,18 @@ export default function Contatti() {
                 </div>
 
                 <div className="pt-6">
-                  <h3 className="font-semibold text-lg mb-4">Sledujte nás</h3>
-                  <div className="flex gap-4">
-                    <a href="#" className="w-10 h-10 bg-[#e42842] rounded-full flex items-center justify-center text-white hover:bg-[#c41f35] transition-colors">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                      </svg>
+                  <h3 className="font-semibold text-lg mb-2">B2B a HoReCa</h3>
+                  <p className="text-gray-700 leading-7">
+                    Pro poptávky restaurací, kanceláří a provozoven nám napište na{' '}
+                    <a href="mailto:info@musettishop.cz" className="hover:text-[#e42842]">
+                      info@musettishop.cz
+                    </a>{' '}
+                    nebo zavolejte na{' '}
+                    <a href="tel:+420608902070" className="hover:text-[#e42842]">
+                      +420 608 902 070
                     </a>
-                    <a href="#" className="w-10 h-10 bg-[#e42842] rounded-full flex items-center justify-center text-white hover:bg-[#c41f35] transition-colors">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="white" strokeWidth="2"></path>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" strokeWidth="2"></line>
-                      </svg>
-                    </a>
-                    <a href="#" className="w-10 h-10 bg-[#e42842] rounded-full flex items-center justify-center text-white hover:bg-[#c41f35] transition-colors">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-                        <circle cx="4" cy="4" r="2"></circle>
-                      </svg>
-                    </a>
-                  </div>
+                    .
+                  </p>
                 </div>
               </div>
             </div>
@@ -140,10 +160,15 @@ export default function Contatti() {
         </div>
       </section>
 
-      {/* Map Section - Placeholder */}
-      <section className="bg-gray-100 h-96">
-        <div className="w-full h-full bg-gray-300 flex items-center justify-center text-gray-600">
-          <p>Mapa Google Maps (k doplnění)</p>
+      <section className="bg-gray-100">
+        <div className="h-96 w-full overflow-hidden">
+          <iframe
+            title="Mapa Musetti Pontenure"
+            src="https://www.google.com/maps?q=Via%20G.Marcora%202%2F4%2C%2029010%20Pontenure%20(PC)%2C%20Italia&z=15&output=embed"
+            className="h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </>

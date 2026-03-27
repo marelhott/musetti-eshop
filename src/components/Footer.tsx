@@ -38,7 +38,7 @@ export default function Footer() {
           <div>
             <p className="text-sm uppercase tracking-[0.24em] text-white/45">Další kroky</p>
             <div className="mt-4 flex flex-col gap-3 text-sm text-white/80">
-              <Link href="/#horeca" className="transition-colors hover:text-white">
+              <Link href="/contatti" className="transition-colors hover:text-white">
                 HoReCa / B2B blok
               </Link>
               <Link href="/contatti" className="transition-colors hover:text-white">

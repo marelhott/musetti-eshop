@@ -9,6 +9,7 @@ import {
   getProductsByCategory,
 } from '@/data/catalog';
 import { getSourceProductDetail } from '@/lib/sourceProductDetail';
+import ProductGallery from '@/components/ProductGallery';
 
 type ProductPageProps = {
   params: Promise<{
@@ -19,7 +20,7 @@ type ProductPageProps = {
 export function generateStaticParams() {
   const params = new Map();
 
-  for (const category of catalogCategories as Array<{ id: string }>) {
+  for (const category of catalogCategories) {
     const categoryProducts = getProductsByCategory(category.id);
     for (const product of categoryProducts) {
       params.set(product.slug, { slug: product.slug });
@@ -46,10 +47,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const relatedProducts = getProductsByCategory(product.categoryId).filter(
     (relatedProduct) => relatedProduct.slug !== product.slug,
   );
-  const fallbackSourceDetail = await getSourceProductDetail(product.sourceUrl);
-  const sourceDetail = product.detail ?? fallbackSourceDetail;
+  const sourceDetail = product.detail ?? (await getSourceProductDetail(product.sourceUrl));
   const galleryImages = sourceDetail.galleryImages.length > 0 ? sourceDetail.galleryImages : product.images;
-  const [primaryImage, ...secondaryImages] = galleryImages;
 
   return (
     <main className="bg-white">
@@ -78,30 +77,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </span>
               </div>
 
-              <div className="grid gap-3 md:grid-cols-[1fr_116px]">
-                <div className="flex min-h-[780px] items-center justify-center rounded-[1.5rem] bg-white px-1 py-1 md:px-2">
-                  <img
-                    src={primaryImage}
-                    alt={product.title}
-                    className="h-full max-h-[760px] w-full object-contain"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 md:grid-cols-1">
-                  {(galleryImages as readonly string[]).map((image: string, index: number) => (
-                    <div
-                      key={`${image}-${index}`}
-                      className="flex h-28 items-center justify-center rounded-[1.25rem] border border-[#eadfd5] bg-white p-1.5"
-                    >
-                      <img
-                        src={image}
-                        alt={`${product.title} náhled ${index + 1}`}
-                        className="h-full w-full object-scale-down"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <ProductGallery images={galleryImages} title={product.title} />
             </div>
 
             <div className="flex flex-col justify-center">
