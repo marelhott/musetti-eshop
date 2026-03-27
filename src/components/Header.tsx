@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, Search, ShoppingCart, User, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
 import { catalogCategories } from '@/data/catalog';
@@ -239,20 +239,7 @@ export default function Header() {
           </div>
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
-          <button type="button" className="text-sm text-[#6f5a4e] transition-colors hover:text-[#2d1e17]">
-            CZK / EUR
-          </button>
-          <button type="button" aria-label="Profil" className="text-[#2d1e17] transition-colors hover:text-[#a5513a]">
-            <User className="h-5 w-5" />
-          </button>
-          <button type="button" aria-label="Hledání" className="text-[#2d1e17] transition-colors hover:text-[#a5513a]">
-            <Search className="h-5 w-5" />
-          </button>
-          <button type="button" aria-label="Košík" className="text-[#2d1e17] transition-colors hover:text-[#a5513a]">
-            <ShoppingCart className="h-5 w-5" />
-          </button>
-        </div>
+        <div className="hidden md:block" />
 
         <button
           className="justify-self-end md:hidden"
