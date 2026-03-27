@@ -65,6 +65,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCatalogOpen, setMobileCatalogOpen] = useState(false);
   const [mobileBrandOpen, setMobileBrandOpen] = useState(false);
+  const [activeDesktopMenu, setActiveDesktopMenu] = useState<string | null>(null);
 
   const groupedCatalog = useMemo(() => {
     return {
@@ -80,6 +81,15 @@ export default function Header() {
       ),
     };
   }, []);
+
+  const desktopMenuClassName = (menuKey: string, minWidthClassName: string) =>
+    [
+      'absolute left-1/2 top-full z-20 -translate-x-1/2 rounded-[1.5rem] border border-[#ece4dd] bg-white p-3 shadow-[0_22px_60px_rgba(77,48,34,0.12)] transition-all duration-150',
+      minWidthClassName,
+      activeDesktopMenu === menuKey
+        ? 'visible mt-4 opacity-100 pointer-events-auto'
+        : 'invisible mt-2 opacity-0 pointer-events-none',
+    ].join(' ');
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#ece4dd] bg-white">
@@ -97,11 +107,19 @@ export default function Header() {
             AKCE!
           </Link>
 
-          <div className="group relative">
-            <button className="text-[0.95rem] font-medium text-[#2d1e17] transition-colors hover:text-[#a5513a]">
+          <div
+            className="relative"
+            onMouseEnter={() => setActiveDesktopMenu('coffee')}
+            onMouseLeave={() => setActiveDesktopMenu(null)}
+          >
+            <button
+              type="button"
+              onFocus={() => setActiveDesktopMenu('coffee')}
+              className="text-[0.95rem] font-medium text-[#2d1e17] transition-colors hover:text-[#a5513a]"
+            >
               Káva
             </button>
-            <div className="invisible absolute left-1/2 top-full z-20 mt-4 min-w-[320px] -translate-x-1/2 rounded-[1.5rem] border border-[#ece4dd] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div className={desktopMenuClassName('coffee', 'min-w-[320px]')}>
               <div className="flex flex-col gap-1">
                 {groupedCatalog.coffee.map((item) => (
                   <Link
@@ -116,11 +134,19 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="group relative">
-            <button className="text-[0.95rem] font-medium text-[#2d1e17] transition-colors hover:text-[#a5513a]">
+          <div
+            className="relative"
+            onMouseEnter={() => setActiveDesktopMenu('gourmet')}
+            onMouseLeave={() => setActiveDesktopMenu(null)}
+          >
+            <button
+              type="button"
+              onFocus={() => setActiveDesktopMenu('gourmet')}
+              className="text-[0.95rem] font-medium text-[#2d1e17] transition-colors hover:text-[#a5513a]"
+            >
               Gurmánské produkty
             </button>
-            <div className="invisible absolute left-1/2 top-full z-20 mt-4 min-w-[320px] -translate-x-1/2 rounded-[1.5rem] border border-[#ece4dd] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div className={desktopMenuClassName('gourmet', 'min-w-[320px]')}>
               <div className="flex flex-col gap-1">
                 <Link
                   href="/gurmanske-produkty"
@@ -150,11 +176,19 @@ export default function Header() {
             </Link>
           ) : null}
 
-          <div className="group relative">
-            <button className="text-[0.95rem] font-medium text-[#2d1e17] transition-colors hover:text-[#a5513a]">
+          <div
+            className="relative"
+            onMouseEnter={() => setActiveDesktopMenu('machines')}
+            onMouseLeave={() => setActiveDesktopMenu(null)}
+          >
+            <button
+              type="button"
+              onFocus={() => setActiveDesktopMenu('machines')}
+              className="text-[0.95rem] font-medium text-[#2d1e17] transition-colors hover:text-[#a5513a]"
+            >
               Kávovary
             </button>
-            <div className="invisible absolute left-1/2 top-full z-20 mt-4 min-w-[280px] -translate-x-1/2 rounded-[1.5rem] border border-[#ece4dd] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div className={desktopMenuClassName('machines', 'min-w-[280px]')}>
               <div className="flex flex-col gap-1">
                 {groupedCatalog.machines.map((item) => (
                   <Link
@@ -169,11 +203,19 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="group relative">
-            <button className="text-[0.95rem] font-medium text-[#6f5a4e] transition-colors hover:text-[#a5513a]">
+          <div
+            className="relative"
+            onMouseEnter={() => setActiveDesktopMenu('brand')}
+            onMouseLeave={() => setActiveDesktopMenu(null)}
+          >
+            <button
+              type="button"
+              onFocus={() => setActiveDesktopMenu('brand')}
+              className="text-[0.95rem] font-medium text-[#6f5a4e] transition-colors hover:text-[#a5513a]"
+            >
               Informace
             </button>
-            <div className="invisible absolute left-1/2 top-full z-20 mt-4 min-w-[220px] -translate-x-1/2 rounded-[1.5rem] border border-[#ece4dd] bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(77,48,34,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div className={desktopMenuClassName('brand', 'min-w-[220px]')}>
               <div className="flex flex-col gap-1">
                 {brandNavigationItems.map((item) => (
                   <Link
