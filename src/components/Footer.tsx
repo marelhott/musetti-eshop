@@ -2,6 +2,12 @@ import Link from 'next/link';
 
 import { catalogCategories, featuredCategories } from '@/data/catalog';
 
+const footerContact = {
+  email: 'info@musettishop.cz',
+  primaryPhone: '+420 608 902 070',
+  secondaryPhone: '+420 777 033 307',
+};
+
 export default function Footer() {
   const footerLinks = catalogCategories.map((category: (typeof catalogCategories)[number]) => ({
     href: category.pageHref,
@@ -11,7 +17,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#201510] py-14 text-white">
       <div className="container mx-auto px-4">
-        <div className="grid gap-10 border-b border-white/10 pb-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr]">
+        <div className="grid gap-10 border-b border-white/10 pb-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr_1fr]">
           <div>
             <img
               src="https://ext.same-assets.com/721295644/1917089157.png"
@@ -46,6 +52,24 @@ export default function Footer() {
               </Link>
               <Link href="/sortiment" className="transition-colors hover:text-white">
                 Otevřít katalog
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-sm uppercase tracking-[0.24em] text-white/45">Kontakt</p>
+            <div className="mt-4 flex flex-col gap-3 text-sm text-white/80">
+              <a href={`mailto:${footerContact.email}`} className="transition-colors hover:text-white">
+                {footerContact.email}
+              </a>
+              <a href="tel:+420608902070" className="transition-colors hover:text-white">
+                {footerContact.primaryPhone}
+              </a>
+              <a href="tel:+420777033307" className="transition-colors hover:text-white">
+                {footerContact.secondaryPhone}
+              </a>
+              <Link href="/contatti" className="transition-colors hover:text-white">
+                Kontaktní stránka
               </Link>
             </div>
           </div>
