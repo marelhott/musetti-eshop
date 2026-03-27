@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, Search, ShoppingCart, User, X } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
+import { useCart } from '@/components/CartProvider';
 import { catalogCategories } from '@/data/catalog';
 
 const brandNavigationItems = [
@@ -62,6 +63,7 @@ function sortOrderedCategories<T extends { id: string; label: string }>(
 }
 
 export default function Header() {
+  const { itemCount, openCart } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCatalogOpen, setMobileCatalogOpen] = useState(false);
   const [mobileBrandOpen, setMobileBrandOpen] = useState(false);
@@ -103,7 +105,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center justify-center gap-6 md:flex lg:gap-8">
-          <Link href="/akce" className="text-[0.92rem] font-semibold tracking-[0.12em] text-[#c92b38] transition-colors hover:text-[#a5513a]">
+          <Link href="/akce" className="text-[0.82rem] font-semibold tracking-[0.11em] text-[#c92b38] transition-colors hover:text-[#a5513a]">
             AKCE!
           </Link>
 
@@ -115,7 +117,7 @@ export default function Header() {
             <button
               type="button"
               onFocus={() => setActiveDesktopMenu('coffee')}
-              className="text-[0.95rem] font-medium text-[#2d1e17] transition-colors hover:text-[#a5513a]"
+              className="text-[0.88rem] font-normal tracking-[0.01em] text-[#2d1e17] transition-colors hover:text-[#a5513a]"
             >
               Káva
             </button>
@@ -144,7 +146,7 @@ export default function Header() {
             <button
               type="button"
               onFocus={() => setActiveDesktopMenu('gourmet')}
-              className="text-[0.95rem] font-medium text-[#2d1e17] transition-colors hover:text-[#a5513a]"
+              className="text-[0.88rem] font-normal tracking-[0.01em] text-[#2d1e17] transition-colors hover:text-[#a5513a]"
             >
               Gurmánské produkty
             </button>
@@ -174,7 +176,7 @@ export default function Header() {
           {groupedCatalog.accessories[0] ? (
             <Link
               href={groupedCatalog.accessories[0].pageHref}
-              className="text-[0.95rem] font-medium text-[#2d1e17] transition-colors hover:text-[#a5513a]"
+              className="text-[0.88rem] font-normal tracking-[0.01em] text-[#2d1e17] transition-colors hover:text-[#a5513a]"
             >
               Šálky a doplňky
             </Link>
@@ -188,7 +190,7 @@ export default function Header() {
             <button
               type="button"
               onFocus={() => setActiveDesktopMenu('machines')}
-              className="text-[0.95rem] font-medium text-[#2d1e17] transition-colors hover:text-[#a5513a]"
+              className="text-[0.88rem] font-normal tracking-[0.01em] text-[#2d1e17] transition-colors hover:text-[#a5513a]"
             >
               Kávovary
             </button>
@@ -217,7 +219,7 @@ export default function Header() {
             <button
               type="button"
               onFocus={() => setActiveDesktopMenu('brand')}
-              className="text-[0.95rem] font-medium text-[#6f5a4e] transition-colors hover:text-[#a5513a]"
+              className="text-[0.88rem] font-normal tracking-[0.01em] text-[#5e514a] transition-colors hover:text-[#a5513a]"
             >
               Informace
             </button>
@@ -239,7 +241,30 @@ export default function Header() {
           </div>
         </nav>
 
-        <div className="hidden md:block" />
+        <div className="hidden items-center gap-4 md:flex">
+          <button type="button" className="text-sm text-[#6f5a4e] transition-colors hover:text-[#2d1e17]">
+            CZK / EUR
+          </button>
+          <button type="button" aria-label="Profil" className="text-[#2d1e17] transition-colors hover:text-[#a5513a]">
+            <User className="h-5 w-5" />
+          </button>
+          <button type="button" aria-label="Hledání" className="text-[#2d1e17] transition-colors hover:text-[#a5513a]">
+            <Search className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            aria-label="Košík"
+            onClick={openCart}
+            className="relative text-[#2d1e17] transition-colors hover:text-[#a5513a]"
+          >
+            <ShoppingCart className="h-5 w-5" />
+            {itemCount > 0 ? (
+              <span className="absolute -right-2 -top-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#bf4430] px-1 text-[10px] font-semibold text-white">
+                {itemCount}
+              </span>
+            ) : null}
+          </button>
+        </div>
 
         <button
           className="justify-self-end md:hidden"
