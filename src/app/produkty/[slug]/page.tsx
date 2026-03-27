@@ -49,6 +49,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
   );
   const sourceDetail = product.detail ?? (await getSourceProductDetail(product.sourceUrl));
   const galleryImages = sourceDetail.galleryImages.length > 0 ? sourceDetail.galleryImages : product.images;
+  const contactPhones = sourceDetail.contact.phone
+    .split(',')
+    .map((phone) => phone.trim())
+    .filter(Boolean);
 
   return (
     <main className="bg-white">
@@ -147,9 +151,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <div className="rounded-[1.75rem] border border-[#eadfd5] bg-white p-6">
                   <p className="text-[11px] uppercase tracking-[0.24em] text-[#9b7f70]">Máte dotaz?</p>
                   <div className="mt-4 flex flex-wrap gap-5 text-[0.95rem] text-[#6f5a4e]">
-                    <a href={`tel:${sourceDetail.contact.phone}`} className="transition-colors hover:text-[#a5513a]">
-                      {sourceDetail.contact.phone}
-                    </a>
+                    {contactPhones.map((phone) => (
+                      <a
+                        key={phone}
+                        href={`tel:${phone.replace(/\s+/g, '')}`}
+                        className="transition-colors hover:text-[#a5513a]"
+                      >
+                        {phone}
+                      </a>
+                    ))}
                     <a
                       href={`mailto:${sourceDetail.contact.email}`}
                       className="transition-colors hover:text-[#a5513a]"

@@ -1,3 +1,26 @@
+'use client';
+
+function buildMailtoUrl(formData: FormData, email: string) {
+  const name = String(formData.get('name') ?? '').trim();
+  const senderEmail = String(formData.get('email') ?? '').trim();
+  const phone = String(formData.get('phone') ?? '').trim();
+  const message = String(formData.get('message') ?? '').trim();
+
+  const subject = `Poptávka z MusettiShop.cz${name ? ` - ${name}` : ''}`;
+  const body = [
+    name ? `Jméno: ${name}` : '',
+    senderEmail ? `E-mail: ${senderEmail}` : '',
+    phone ? `Telefon: ${phone}` : '',
+    '',
+    'Zpráva:',
+    message,
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 export default function Contatti() {
   const contactEmail = 'info@musettishop.cz';
   const primaryPhone = '+420 608 902 070';
@@ -23,9 +46,11 @@ export default function Contatti() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Napište nám</h2>
               <form
-                action={`mailto:${contactEmail}`}
-                method="post"
-                encType="text/plain"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  const formData = new FormData(event.currentTarget);
+                  window.location.href = buildMailtoUrl(formData, contactEmail);
+                }}
                 className="space-y-4"
               >
                 <div>
