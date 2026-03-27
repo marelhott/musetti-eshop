@@ -47,7 +47,7 @@ export default function SortimentPage() {
                 </Link>
               </div>
 
-              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr))]">
                 {category.products
                   .slice(0, 6)
                   .map((product: (typeof category.products)[number]) => (

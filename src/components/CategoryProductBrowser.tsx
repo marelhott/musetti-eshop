@@ -49,7 +49,10 @@ function ListCard({ product, categoryLabel }: { product: CatalogProduct; categor
   );
 }
 
-export default function CategoryProductBrowser({ products, categoryLabel }: CategoryProductBrowserProps) {
+export default function CategoryProductBrowser({
+  products,
+  categoryLabel,
+}: CategoryProductBrowserProps) {
   const [view, setView] = useState<ViewMode>('medium');
   const [sortMode, setSortMode] = useState<SortMode>('recommended');
 
@@ -124,7 +127,7 @@ export default function CategoryProductBrowser({ products, categoryLabel }: Cate
         ) : null}
 
         {view === 'medium' ? (
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr))]">
             {sortedProducts.map((product) => (
               <ProductCard key={product.slug} product={product} categoryLabel={categoryLabel} />
             ))}

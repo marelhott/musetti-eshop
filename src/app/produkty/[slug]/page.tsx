@@ -53,6 +53,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
     .split(',')
     .map((phone) => phone.trim())
     .filter(Boolean);
+  const detailParagraphs =
+    sourceDetail.bodyParagraphs.length > 0 ? sourceDetail.bodyParagraphs : [product.shortDescription];
 
   return (
     <main className="bg-white">
@@ -236,15 +238,39 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     </div>
                   ) : null}
 
-                  <div className="space-y-4">
-                    {(sourceDetail.bodyParagraphs.length > 0
-                      ? sourceDetail.bodyParagraphs
-                      : [product.shortDescription]
-                    ).map((paragraph: string) => (
-                      <p key={paragraph} className="text-[0.95rem] leading-7 text-[#5f4a3d]">
-                        {paragraph}
-                      </p>
-                    ))}
+                  <div className="grid gap-3">
+                    {detailParagraphs.map((paragraph: string) => {
+                      const normalized = paragraph.trim();
+                      const isSectionLabel =
+                        normalized.length <= 36 &&
+                        !normalized.includes('.') &&
+                        !normalized.startsWith('•') &&
+                        !normalized.startsWith('*');
+
+                      if (isSectionLabel) {
+                        return (
+                          <div
+                            key={paragraph}
+                            className="rounded-[1rem] border border-[#eadfd5] bg-[#fcf8f4] px-4 py-3"
+                          >
+                            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-[#8e7466]">
+                              {normalized}
+                            </p>
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <div
+                          key={paragraph}
+                          className="max-w-[58rem] rounded-[1.15rem] border border-[#efe4db] bg-white px-4 py-4 shadow-[0_10px_30px_rgba(77,48,34,0.04)]"
+                        >
+                          <p className="text-[0.72rem] leading-[1.85] text-[#5f4a3d] md:text-[0.78rem]">
+                            {normalized}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
 
                   {sourceDetail.specs.length > 0 ? (
@@ -295,7 +321,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </Link>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr))]">
             {relatedProducts.map((relatedProduct: (typeof relatedProducts)[number]) => (
               <ProductCard
                 key={`${category.id}-${relatedProduct.slug}`}
